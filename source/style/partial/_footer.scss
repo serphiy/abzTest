@@ -1,0 +1,20 @@
+.footer {
+    color: #b7bfcd;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 4px 15px;
+}
+
+.footer__link {
+    color: #b7bfcd;
+    display: inline-block;
+    text-decoration: none;
+    &:hover, &:active {
+        text-decoration: underline;
+    }
+}
+
+.footer__copy,
+.footer__link {
+    padding: 10px 20px 0 0;
+}
