@@ -7,14 +7,15 @@ html
         link(rel="stylesheet" type="text/css" href="css/main.min.css")
     body
         include include/page-header.pug
-        aside.left-sidebar
-            include include/navigation.pug
-            include include/adv-left.pug
-            include include/companies.pug
-            include include/footer.pug
-        main
-            include include/services.pug
-        aside.right-sidebar
-            include include/people.pug
-            include include/products.pug
-            include include/adv-right.pug
+        .page-content
+            aside.left-sidebar
+                include include/navigation.pug
+                include include/adv-left.pug
+                include include/companies.pug
+                include include/footer.pug
+            main
+                include include/services.pug
+            aside.right-sidebar
+                include include/people.pug
+                include include/products.pug
+                include include/adv-right.pug
