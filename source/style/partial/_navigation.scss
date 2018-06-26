@@ -1,0 +1,52 @@
+.navigation {
+    padding: 0 20px 0 8px;
+}
+
+.navigation__list {
+        color: #59606b;
+        font-size: 16px;
+        line-height: 50px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navigation__item {
+        display: block;
+        border-bottom: 1px solid #dfe1e5;
+    }
+
+    .navigation__link {
+        color:  #59606b;
+        display: block;
+        padding-left: 50px;
+        text-decoration: none;
+        overflow: hidden;
+        max-width: 240px - 20px - 8px - 50px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        position: relative;
+        &:hover, &:active {
+            color: #71973c;
+        }
+        &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 14px;
+        }
+    }
+
+    .navigation__link_feed::before {
+        @include sprite($icon-feed);
+    }
+    .navigation__link_ask::before {
+        @include sprite($icon-ask);
+    }
+    .navigation__link_companies::before {
+        @include sprite($icon-companies);
+    }
+    .navigation__link_services::before {
+        @include sprite($icon-services);
+    }
