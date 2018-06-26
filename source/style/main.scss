@@ -19,6 +19,8 @@ h1, h2, h3, h4, h5 {
   margin: 0;
 }
 
+@import "partial/_sprite";
+
 @import "partial/_page-header";
 @import "partial/_navigation";
 @import "partial/_adv-left";
