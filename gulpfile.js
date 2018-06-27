@@ -35,7 +35,8 @@ const path = {
     src: {
         template:  'source/template/*.pug',
         style:     'source/style/main.scss',
-        js:        ['source/js/**/*.js'],
+        js:        ['node_modules/jquery/dist/jquery.min.js',
+                    'source/js/**/*.js'],
         imagesCSS: 'source/style/images/**/*.*',
         sprite:    'source/style/icons/**/*.png',
         img:       'source/img/**/*.*',
