@@ -1,6 +1,3 @@
-//Get Token
-var accessToken = '';
-
 function getToken() {
   var url_base = 'http://504080.com/api/v1/account/login';
   var requestPayload = {
@@ -18,7 +15,6 @@ function getToken() {
     data: JSON.stringify(requestPayload)
   })
     .then(function (result) {
-      accessToken = result.data.token;
       return result.data.token;
     })
     .fail(function (error) {
@@ -45,7 +41,40 @@ function getServices(token) {
     });
 }
 
+function renderServices(servicesArray) {
+  function createServiceCard(icon, title) {
+    if (!(icon) || !(title)) {return;}
+
+    var card = document.createElement('a');
+    $(card).addClass('service-card')
+           .attr('href','#');
+
+    var cardImgWrapper = document.createElement('div');
+    $(cardImgWrapper).addClass('service-card__img-wrapper')
+                 .appendTo($(card));
+
+    var cardImg = document.createElement('img');
+    $(cardImg).addClass('service-card__img')
+              .attr('src', icon)
+              .attr('alt', title)
+              .appendTo($(cardImgWrapper));
+
+    var cardDesc = document.createElement('div');
+    $(cardDesc).addClass('service-card__desc')
+                 .text(title)
+                 .appendTo($(card));
+    return $(card);
+  }
+
+  var servicesElements = [];
+  for (var i = 0; i < servicesArray.length; i++) {
+    servicesElements.push(createServiceCard(servicesArray[i].icon, servicesArray[i].title));
+  }
+
+  $('#services__content').append(servicesElements);
+}
+
 // Call
-var request = getToken().then(getServices).then(function (data) {
-  console.log(data);
+getToken().then(getServices).then(renderServices).catch(function (error) {
+  console.log(error);
 });

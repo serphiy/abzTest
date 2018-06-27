@@ -77,6 +77,9 @@
     .service-card__img {
         display: inline-block;
         margin: auto;
+        height: 69px;
+        width: 69px;
+        object-fit: cover;
     }
 
     .service-card__desc {
