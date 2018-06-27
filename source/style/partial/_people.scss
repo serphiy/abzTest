@@ -1,0 +1,119 @@
+.people {
+    padding: 0 18px 0 8px;
+    &::after {
+        content: '';
+        display: block;
+        margin-top: 7px;
+        border-bottom: 1px solid #dfe1e5;
+    }
+}
+
+.people__header {
+    padding: 18px 0 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+    .people__title {
+        color: #7c8695;
+        display: inline-block;
+        font-size: 14px;
+        max-width: 75%;
+        padding-right: 10px;
+    }
+
+    .people__all {
+        color: #1c2534;
+        display: inline-block;
+        font-size: 14px;
+        text-decoration: none;
+        &:hover, &:active {
+            text-decoration: underline;
+        }
+    }
+
+.people-card {
+    padding-bottom: 19px;
+}
+
+    .people-card__title {
+        color: #1c2534;
+        font-size: 16px;
+        padding: 1px 0 3px 0;
+    }
+
+    .people-card__img {
+        border-radius: 7px;
+        display: inline-block;
+        object-fit: cover;
+        width: 80px;
+        height: 80px;
+        vertical-align: top;
+    }
+
+    .people-card__desc {
+        display: inline-block;
+        padding-left: 4px;
+        vertical-align: top;
+    }
+
+    .people-card__position,
+    .people-card__address {
+        color: #7c8695;
+        font-size: 14px;
+        line-height: 18px;
+        padding: 0 0 3px 2px;
+    }
+
+    .people-card__link {
+        color: #1c2534;
+        display: block;
+        font-size: 12px;
+        padding: 1px 0 0 2px;
+        text-decoration: none;
+        &:hover, &:active {
+            text-decoration: underline;
+        }
+    }
+
+    // Ellipsis
+
+    .people-card__title {
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .people-card__position {
+        background: #fff;
+        overflow: hidden;
+        position: relative;
+        line-height: 18px;
+        max-height: 18px * 2;
+        max-width: 120px;
+        &::before {
+            content: '...';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: 0 0.2em;
+            background: inherit;
+        }
+        & span::after {
+            content: '\0000a0';
+            position: absolute;
+            width: 1000px;
+            z-index: 1;
+            background: #fff;
+        }
+    }
+
+    .people-card__address,
+    .people-card__link {
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
