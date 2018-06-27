@@ -75,3 +75,27 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+
+    .products-card__desc {
+        background: #fff;
+        overflow: hidden;
+        position: relative;
+        line-height: 17px;
+        max-height: 17px * 5;
+        max-width: 120px;
+        &::before {
+            content: '...';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: 0 0.2em;
+            background: inherit;
+        }
+        & p:last-child::after {
+            content: '\0000a0';
+            position: absolute;
+            width: 1000px;
+            z-index: 1;
+            background: #fff;
+        }
+    }
