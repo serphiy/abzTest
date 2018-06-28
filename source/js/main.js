@@ -78,6 +78,17 @@ function showModal(title, info, desc) {
   });
 }
 
+function handleConnectionError(error) {
+  var errorMessage = 'No connection';
+  if (error.status > 0) {
+    errorMessage = error.status + ': ' + error.statusText;
+    if (error.responseJSON && error.responseJSON.error.description) {
+      errorMessage = error.responseJSON.error.description;
+    }
+  }
+  showModal('Oops...', 'Connection error', errorMessage);
+}
+
 function getToken() {
   var url_base = 'http://504080.com/api/v1/account/login';
   var requestPayload = {
@@ -97,9 +108,7 @@ function getToken() {
     .then(function (result) {
       return result.data.token;
     })
-    .fail(function (error) {
-      console.log('Getting token error: ' + error.status + ' - ' + error.statusText);
-    });
+    .fail(handleConnectionError);
 }
 
 function getServices(token) {
@@ -116,9 +125,7 @@ function getServices(token) {
     .then(function (result) {
       return result.data;
     })
-    .fail(function (error) {
-      console.log('Getting services error: ' + error.status + ' - ' + error.statusText);
-    });
+    .fail(handleConnectionError);
 }
 
 function createServiceCard(icon, title) {
@@ -155,6 +162,4 @@ function renderServices(servicesArray) {
 }
 
 // Call
-getToken().then(getServices).then(renderServices).catch(function (error) {
-  console.log(error);
-});
+getToken().then(getServices).then(renderServices);
