@@ -44,6 +44,38 @@ function showModal(title, info, desc) {
             .appendTo($(modalFooter));
 
   $(modal).appendTo($('body'));
+
+  $(modalClose).click(function() {
+    $(modal).remove();
+    $(document).off('click.outsideModal');
+    $(document).off('keydown.escModal');
+  });
+
+  $(modalOk).click(function() {
+    $(modal).remove();
+    $(document).off('click.outsideModal');
+    $(document).off('keydown.escModal');
+  });
+
+  $(document).on('click.outsideModal', function(event) {
+    if(!$(event.target).closest(modalBox).length) {
+        event.preventDefault();
+        event.stopPropagation();
+        $(modal).remove();
+        $(document).off('click.outsideModal');
+        $(document).off('keydown.escModal');
+    }
+  });
+
+  $(document).on('keydown.escModal', function(event) {
+    if (event.keyCode == 27) {
+      event.preventDefault();
+      event.stopPropagation();
+      $(modal).remove();
+      $(document).off('click.outsideModal');
+      $(document).off('keydown.escModal');
+    }
+  });
 }
 
 function getToken() {
