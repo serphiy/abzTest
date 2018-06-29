@@ -1,1 +1,21 @@
 section.contact-content
+    form.contact-form
+        .contact-form__note Fields marked “*” are required
+        label.contact-form__label Enquiry Type *
+            select.contact-form__select(name="enquiry-type-select" required)
+                option(value="other") Other
+        input.contact-form__input(type="text" name="enquiry-type-other" placeholder="Other")
+        label.contact-form__label.contact-form__label_half Name *
+            input.contact-form__input(type="text" name="name" placeholder="Dentist" required)
+        label.contact-form__label.contact-form__label_half Email *
+            input.contact-form__input(type="email" name="email" placeholder="rachelm@gmail.com" required)
+        label.contact-form__label Subject *
+            input.contact-form__input(type="text" name="subject" placeholder="" required)
+        label.contact-form__label Description *
+            span.contact-form__counter (0/1000)
+            textarea.contact-form__textarea(name="description" required)
+        .contact-form__img
+            .contact-form__img-text
+                h4.contact-form__img-title Add photo
+                p.contact-form__img-desc Maximum size of 300x300 jpeg pg png 5 MB
+        input.contact-form__submit(type="submit" value="Submit")
