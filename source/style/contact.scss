@@ -1,0 +1,26 @@
+@import "partial/_normalize";
+@import "partial/_fonts";
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+    background-color: #fff;
+    color: #1c2534;
+    font-family: "Proxima Nova", sans-serif;
+    font-weight: normal;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+
+@import "partial/_contact-header";
+@import "partial/_contact-promo";
+@import "partial/_contact-content";
+@import "partial/_contact-about";
+@import "partial/_contact-footer";
