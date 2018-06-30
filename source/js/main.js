@@ -161,5 +161,6 @@ function renderServices(servicesArray) {
   $('#services__content').append(servicesElements);
 }
 
-// Call
-getToken().then(getServices).then(renderServices);
+function addServices() {
+  getToken().then(getServices).then(renderServices);
+}
