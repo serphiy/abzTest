@@ -1,0 +1,33 @@
+.contact-footer {
+    border-top: 1px solid  #dfe1e5;
+    padding: 0 50px 0 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-footer__copy,
+.contact-footer__link {
+    color: #b7bfcd;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 42px;
+    padding: 15px 24px 15px 0;
+}
+
+.contact-footer__link {
+    text-decoration: none;
+        &:hover, &:active {
+            text-decoration: underline;
+        }
+}
+
+.contact-footer__links {
+    padding-right: 11px;
+}
+
+.contact-footer__copy,
+.contact-footer__link,
+.contact-footer__links {
+    display: inline-block;
+}
