@@ -1,0 +1,36 @@
+.contact-promo {
+    background-color: #1c2534;
+    background-image: linear-gradient(to right, rgba(28,37,52,0.9) 0%, rgba(28,37,52,0.9) 100%),
+                      url("images/promo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    box-sizing: border-box;
+    color: #f3f4f6;
+    min-height: 510px;
+    padding: 100px 50px;
+    text-align: center;
+    display: flex;
+}
+
+.contact-promo__text {
+    display: inline-block;
+    margin: auto;
+    max-width: 540px;
+    padding: 20px 20px;
+}
+
+    .contact-promo__title {
+        color: #f3f4f6;
+        font-size: 48px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    .contact-promo__desc {
+        color: #f3f4f6;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 30px;
+        text-align: center;
+    }
