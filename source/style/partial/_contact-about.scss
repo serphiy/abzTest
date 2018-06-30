@@ -1,0 +1,31 @@
+.contact-about {
+    padding: 95px 0 110px 0;
+}
+
+.contact-about__title {
+    color: #1c2534;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 30px;
+    text-align: center;
+}
+
+.contact-about__desc {
+    margin-top: 38px;
+    padding-left: 80px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.contact-about__p {
+    box-sizing: border-box;
+    color: #7c8695;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: -0.11px;
+    line-height: 24px;
+    margin: 0 0;
+    padding-right: 80px;
+    width: 50%;
+}
