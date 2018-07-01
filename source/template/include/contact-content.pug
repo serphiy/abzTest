@@ -3,10 +3,9 @@ section.contact-content
         .contact-form__fields
             .contact-form__note Fields marked “*” are required
             label.contact-form__label Enquiry Type *
-                select.contact-form__select(name="enquiry-type-select" required)
-                    option(value="other") Other
-            .contact-form__label
-                input.contact-form__input#enquiry-type-other(type="text" name="enquiry-type-other" placeholder="Other")
+                select.contact-form__select#enquiry-type-select(name="enquiry-type-select" required)
+            .contact-form__label#enquiry-type-other
+                input.contact-form__input(type="text" name="enquiry-type-other" placeholder="Other")
             .contact-form__person
                 label.contact-form__label.contact-form__label_half Name *
                     input.contact-form__input(type="text" name="name" placeholder="Dentist" required)

@@ -164,3 +164,54 @@ function renderServices(servicesArray) {
 function addServices() {
   getToken().then(getServices).then(renderServices);
 }
+
+// Contact us
+
+function getEnquiryTypes() {
+  var url_base = 'http://504080.com/api/v1/directories/enquiry-types';
+  return $.ajax({
+    url: url_base,
+    type: 'GET',
+    contentType: 'application/json;charset=UTF-8',
+    dataType: 'json'
+  })
+    .then(function (result) {
+      return result.data;
+    })
+    .fail(handleConnectionError);
+}
+
+function createEnquiryTypesOption(value) {
+  var option = document.createElement('option');
+  return $(option).attr('value', value)
+                  .text(value);
+}
+
+function renderEnquiryTypes(enquiryTypesArray) {
+  var enquiryTypesElements = [];
+  var other = false;
+  for (var i = 0; i < enquiryTypesArray.length; i++) {
+    enquiryTypesElements.push(createEnquiryTypesOption(enquiryTypesArray[i].name));
+    if ((enquiryTypesArray[i].name == 'Other') && (!other)) {
+      other = true;
+      $(enquiryTypesElements.slice(-1)[0]).attr('selected', 'selected');
+    }
+  }
+  if (!other) {
+    enquiryTypesElements.push(createEnquiryTypesOption('Other'));
+    $(enquiryTypesElements.slice(-1)[0]).attr('selected', 'selected');
+  }
+
+  $('#enquiry-type-select').append(enquiryTypesElements)
+                           .change(function(event) {
+                              if (event.target.value=='Other') {
+                                $('#enquiry-type-other').show();
+                              } else {
+                                $('#enquiry-type-other').hide();
+                              }
+                           });
+}
+
+function addEnquiryTypes() {
+  getEnquiryTypes().then(renderEnquiryTypes);
+}
