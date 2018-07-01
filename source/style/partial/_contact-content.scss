@@ -50,6 +50,7 @@
     margin: 3px 0 14px 1px;
     padding: 17px 18px 15px 18px;
     display: inline-block;
+    vertical-align: bottom;
     width: 100%;
 }
 
@@ -84,7 +85,7 @@
     box-sizing: border-box;
     width: 130px;
     min-height: 130px;
-    margin: 1px 0 0 1px;
+    margin: 7px 0 0 1px;
     padding: 30px 20px 0 20px;
 }
 
@@ -117,5 +118,18 @@
     padding: 17px 18px 15px 18px;
     display: inline-block;
     width: 100%;
+}
+
+// Validation
+.contact-form__label,
+.contact-form__img-text {
+    position: relative;
+}
+
+.input-error {
+    color: #fb6363;
+    font-size: 12px;
+    position: absolute;
+    bottom: -8px;
 }
 
