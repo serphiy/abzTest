@@ -21,9 +21,10 @@ section.contact-content
                 span.contact-form__counter (0/1000)
                 textarea.contact-form__textarea(name="description" maxlength="1000" required)
                 .input-error
-            .contact-form__img
+            label.contact-form__img#contact-form__img-field
                 .contact-form__img-text
                     h4.contact-form__img-title Add photo
-                    p.contact-form__img-desc Maximum size of 300x300 jpeg ipg png 5 MB
+                    p.contact-form__img-desc Maximum size of 300x300 jpeg jpg png 5 MB
                     .input-error
+                input.contact-form__img-input#contact-form__img-input(type="file" accept="image/*" name="image")
         input.contact-form__submit(type="submit" value="Submit")

@@ -252,3 +252,94 @@ function validateContactForm(formSelector) {
     }
   });
 }
+
+function showImgError() {
+  var imgErrMessage = 'The photo does not meet the requirements';
+  $('#contact-form__img-field').find('.input-error')
+                               .css('position', 'static')
+                               .text(imgErrMessage);
+}
+
+function removeImgError() {
+  $('#contact-form__img-field').find('.input-error')
+                               .text('');
+}
+
+function validateFile(files) {
+  var maxFileSize = 5 * 1024 * 1024;
+  var fileTypes = 'jpeg|png';
+
+  if (files[0].size > maxFileSize) {return false;}
+  if (!(files[0].type.match(RegExp(fileTypes,'i')))) {return false;}
+
+  return true;
+}
+
+function validateImage(image) {
+  var maxImgDimensions = {
+    width:  300,
+    height: 300
+  };
+
+  if ((image.width <= maxImgDimensions.width) && (image.height <= maxImgDimensions.height)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function updateImgPreview(event) {
+  var imgAddField = $('#contact-form__img-field');
+  var files = event.target.files;
+  removeImgError();
+
+  if(files.length === 0) {
+    imgAddField.show();
+  } else {
+    if (validateFile(files)) {
+      var imgFile = window.URL.createObjectURL(files[0]);
+      var img = new Image();
+      img.onload = function() {
+        URL.revokeObjectURL(this.src);
+        if (validateImage(this)) {
+          var preview = document.createElement('div');
+          $(preview).addClass('preview');
+
+          $(this).addClass('preview__img')
+                .attr('alt', 'Uploaded image')
+                .appendTo($(preview));
+
+          var imgClose = document.createElement('button');
+          $(imgClose).addClass('preview__close')
+                     .attr('type', 'button')
+                     .text('\u00D7')
+                     .appendTo($(preview));
+
+          $(imgClose).click(function() {
+            $(preview).remove();
+            $(files).val('');
+            imgAddField.show();
+          });
+
+          $(preview).appendTo(imgAddField.parent());
+          imgAddField.hide();
+        } else {
+          $(this).remove();
+          $(files).val('');
+          showImgError();
+        }
+      };
+      img.src = imgFile;
+    } else {
+      $(files).val('');
+      showImgError();
+    }
+  }
+
+
+
+}
+
+function listenImgInput(imgInputSelector) {
+  $(imgInputSelector).change(updateImgPreview);
+}
