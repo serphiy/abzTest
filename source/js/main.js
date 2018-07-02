@@ -335,11 +335,28 @@ function updateImgPreview(event) {
       showImgError();
     }
   }
-
-
-
 }
 
 function listenImgInput(imgInputSelector) {
   $(imgInputSelector).change(updateImgPreview);
+}
+
+function addTextCounter(textSelector) {
+  var text = $(textSelector);
+  var max = 1000;
+  if (text[0].hasAttribute('maxlength')) {
+    max = text[0].maxLength;
+  } else {
+    text.attr('maxlength', max);
+  }
+
+  var counter = document.createElement('span');
+  $(counter).addClass('contact-form__counter')
+            .text(`(0/${max})`)
+            .insertBefore(text);
+
+  text.on('input', function(event) {
+    var len = $(this).val().length;
+    $(counter).text(`(${len}/${max})`);
+  });
 }
