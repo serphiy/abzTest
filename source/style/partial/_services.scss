@@ -1,5 +1,6 @@
 .services {
-    padding-right: 7px;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
 .services__header {
@@ -22,7 +23,7 @@
     .services__add {
         background-color: #87b347;
         border: 1px solid transparent;
-        border-radius: 7px;
+        border-radius: 5px;
         color: #fff;
         cursor: pointer;
         display: inline-block;
@@ -32,14 +33,14 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        padding: 1px 18px;
+        padding: 0px 19px;
         vertical-align: middle;
     }
 
 .services__content {
     border: 1px solid #dfe1e5;
     border-radius: 5px;
-    padding: 6px 5px;
+    padding: 5px 5px;
     text-align: center;
     display: flex;
     justify-content: center;

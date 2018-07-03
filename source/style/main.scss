@@ -22,11 +22,13 @@ h1, h2, h3, h4, h5 {
 .page-content {
     margin-left: auto;
     margin-right: auto;
-    max-width: 972px;
+    max-width: 970px;
+    padding-right: 16px;
     display: flex;
 }
 
 .left-sidebar, .right-sidebar {
+    box-sizing: border-box;
     width: 240px;
     flex: 0 0 auto;
 }

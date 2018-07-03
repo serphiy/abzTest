@@ -1,5 +1,5 @@
 .companies {
-    padding: 0 15px;
+    padding: 0 14px;
     &::after {
         content: '';
         display: block;
@@ -8,7 +8,7 @@
 }
 
 .companies__header {
-    margin: 0 -2px 0 -1px;
+    margin: 0 0 0 -1px;
     padding: 18px 0 15px 0;
     display: flex;
     justify-content: space-between;
@@ -19,6 +19,7 @@
         color: #7c8695;
         display: inline-block;
         font-size: 14px;
+        font-weight: 400;
         max-width: 70%;
         padding-right: 10px;
     }
@@ -38,7 +39,7 @@
 }
 
     .company-card__img {
-        border-radius: 7px;
+        border-radius: 5px;
         display: inline-block;
         object-fit: cover;
         width: 80px;
@@ -71,7 +72,7 @@
         color: #1c2534;
         display: block;
         font-size: 12px;
-        padding: 1px 0 0 1px;
+        padding: 2px 0 0 2px;
         text-decoration: none;
         &:hover, &:active {
             text-decoration: underline;

@@ -1,5 +1,5 @@
 .people {
-    padding: 0 18px 0 8px;
+    padding: 1px 16px 0 10px;
     &::after {
         content: '';
         display: block;
@@ -9,7 +9,7 @@
 }
 
 .people__header {
-    padding: 18px 0 15px 0;
+    padding: 18px 0 12px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -19,6 +19,7 @@
         color: #7c8695;
         display: inline-block;
         font-size: 14px;
+        font-weight: 400;
         max-width: 75%;
         padding-right: 10px;
     }
@@ -34,18 +35,20 @@
     }
 
 .people-card {
-    padding-bottom: 19px;
+    padding-bottom: 18px;
+    padding-left: 1px;
 }
 
     .people-card__title {
         color: #1c2534;
         font-size: 16px;
-        padding: 1px 0 3px 0;
+        padding: 0 0 5px 0;
     }
 
     .people-card__img {
-        border-radius: 7px;
+        border-radius: 5px;
         display: inline-block;
+        margin-top: 1px;
         object-fit: cover;
         width: 80px;
         height: 80px;
@@ -54,7 +57,7 @@
 
     .people-card__desc {
         display: inline-block;
-        padding-left: 4px;
+        padding-left: 3px;
         vertical-align: top;
     }
 
@@ -62,15 +65,16 @@
     .people-card__address {
         color: #7c8695;
         font-size: 14px;
-        line-height: 18px;
-        padding: 0 0 3px 2px;
+        line-height: 17px;
+        padding: 0 0 0 2px;
+        margin-bottom: 5px;
     }
 
     .people-card__link {
         color: #1c2534;
         display: block;
         font-size: 12px;
-        padding: 1px 0 0 2px;
+        padding: 0 0 0 2px;
         text-decoration: none;
         &:hover, &:active {
             text-decoration: underline;
@@ -90,8 +94,8 @@
         background: #fff;
         overflow: hidden;
         position: relative;
-        line-height: 18px;
-        max-height: 18px * 2;
+        line-height: 17px;
+        max-height: 17px * 2;
         max-width: 120px;
         &::before {
             content: '...';

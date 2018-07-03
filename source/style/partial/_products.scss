@@ -1,5 +1,5 @@
 .products {
-    padding: 0 18px 0 8px;
+    padding: 0 16px 0 9px;
     &::after {
         content: '';
         display: block;
@@ -9,7 +9,7 @@
 }
 
 .products__header {
-    padding: 18px 0 15px 0;
+    padding: 15px 0 15px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -19,6 +19,7 @@
         color: #7c8695;
         display: inline-block;
         font-size: 14px;
+        font-weight: 400;
         max-width: 75%;
         padding-right: 10px;
     }
@@ -34,19 +35,20 @@
     }
 
 .products-card {
-    padding-bottom: 15px;
+    padding-bottom: 19px;
 }
 
     .products-card__title {
         color: #1c2534;
         font-size: 16px;
-        padding: 0 0 1px 1px;
+        padding: 0 0 0 1px;
     }
 
     .products-card__img {
-        border-radius: 7px;
+        border-radius: 5px;
         display: inline-block;
-        margin-top: 2px;
+        margin-top: 3px;
+        margin-left: 2px;
         object-fit: cover;
         width: 80px;
         height: 80px;
@@ -57,9 +59,10 @@
         color: #7c8695;
         display: inline-block;
         font-size: 14px;
-        line-height: 17px;
+        line-height: 16px;
         max-width: 120px;
-        padding-left: 8px;
+        margin-top: 4px;
+        padding-left: 6px;
         vertical-align: top;
     }
 
@@ -80,8 +83,8 @@
         background: #fff;
         overflow: hidden;
         position: relative;
-        line-height: 17px;
-        max-height: 17px * 5;
+        line-height: 16px;
+        max-height: 16px * 5;
         max-width: 120px;
         &::before {
             content: '...';
