@@ -3,13 +3,13 @@ section.contact-content
         .contact-form__fields
             .contact-form__note Fields marked “*” are required
             label.contact-form__label Enquiry Type *
-                select.contact-form__select#enquiry-type-select(name="enquiry-type-select" required)
+                select.contact-form__select#enquiry-type-select(name="enquiry_type" required)
                 .input-error
             .contact-form__label#enquiry-type-other
-                input.contact-form__input(type="text" name="enquiry-type-other" placeholder="Other")
+                input.contact-form__input#enquiry-type-other-input(type="text" placeholder="Other")
             .contact-form__person
                 label.contact-form__label.contact-form__label_half Name *
-                    input.contact-form__input(type="text" name="name" placeholder="Dentist" required)
+                    input.contact-form__input(type="text" name="user_name" placeholder="Dentist" required)
                     .input-error
                 label.contact-form__label.contact-form__label_half Email *
                     input.contact-form__input(type="email" name="email" placeholder="rachelm@gmail.com" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$" required)
@@ -25,5 +25,5 @@ section.contact-content
                     h4.contact-form__img-title Add photo
                     p.contact-form__img-desc Maximum size of 300x300 jpeg jpg png 5 MB
                     .input-error
-                input.contact-form__img-input#contact-form__img-input(type="file" accept="image/*" name="image")
+                input.contact-form__img-input#contact-form__img-input(type="file" accept="image/*" name="file")
         input.contact-form__submit(type="submit" value="Submit")

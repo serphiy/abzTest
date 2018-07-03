@@ -181,24 +181,25 @@ function getEnquiryTypes() {
     .fail(handleConnectionError);
 }
 
-function createEnquiryTypesOption(value) {
+function createEnquiryTypesOption(id, name) {
   var option = document.createElement('option');
-  return $(option).attr('value', value)
-                  .text(value);
+  return $(option).attr('value', id)
+                  .text(name);
 }
 
 function renderEnquiryTypes(enquiryTypesArray) {
   var enquiryTypesElements = [];
   var other = false;
   for (var i = 0; i < enquiryTypesArray.length; i++) {
-    enquiryTypesElements.push(createEnquiryTypesOption(enquiryTypesArray[i].name));
+    enquiryTypesElements.push(createEnquiryTypesOption(i, enquiryTypesArray[i].name));
     if ((enquiryTypesArray[i].name == 'Other') && (!other)) {
       other = true;
-      $(enquiryTypesElements.slice(-1)[0]).attr('selected', 'selected');
+      $(enquiryTypesElements.slice(-1)[0]).attr('selected', 'selected')
+                                          .val('Other');
     }
   }
   if (!other) {
-    enquiryTypesElements.push(createEnquiryTypesOption('Other'));
+    enquiryTypesElements.push(createEnquiryTypesOption('Other', 'Other'));
     $(enquiryTypesElements.slice(-1)[0]).attr('selected', 'selected');
   }
 
@@ -214,43 +215,6 @@ function renderEnquiryTypes(enquiryTypesArray) {
 
 function addEnquiryTypes() {
   getEnquiryTypes().then(renderEnquiryTypes);
-}
-
-function validateContactForm(formSelector) {
-  var form = $(formSelector);
-  form.attr('novalidate', 'novalidate');
-
-  var formElements = {enquiryTypeSelect: {selector: 'select[name="enquiry-type-select"]',
-                                          errMessage: 'Select enquiry type'},
-                      name:     {selector:   'input[name="name"]',
-                                 errMessage: 'Please enter a valid name!'},
-                      email:    {selector:   'input[name="email"]',
-                                 errMessage: 'Please enter a valid email address!'},
-                      subject:  {selector:   'input[name="subject"]',
-                                 errMessage: 'Please enter a subject!'},
-                      desc:     {selector:   'textarea[name="description"]',
-                                 errMessage: 'Please enter a description!'}
-                      };
-
-  for (var key in formElements) {
-    if (formElements.hasOwnProperty(key)) {
-      formElements[key].element = form.find(formElements[key].selector);
-      formElements[key].element.on('input', function(event) {
-        if (event.target.validity.valid) {
-          $(event.target).next('.input-error').text('');
-        }
-      });
-    }
-  }
-
-  form.submit(function(event) {
-    for (var key in formElements) {
-      if (formElements.hasOwnProperty(key) && (!formElements[key].element[0].validity.valid)) {
-        formElements[key].element.next('.input-error').text(formElements[key].errMessage);
-        event.preventDefault();
-      }
-    }
-  });
 }
 
 function showImgError() {
@@ -358,5 +322,83 @@ function addTextCounter(textSelector) {
   text.on('input', function(event) {
     var len = $(this).val().length;
     $(counter).text(`(${len}/${max})`);
+  });
+}
+
+function addContactInputValidation(element) {
+  element.on('input', function(event) {
+    if (event.target.validity.valid) {
+      $(event.target).next('.input-error').text('');
+    }
+  });
+}
+
+function validateContactForm(formElements) {
+  var valid = true;
+  for (var key in formElements) {
+    if (formElements.hasOwnProperty(key) && (!formElements[key].element[0].validity.valid)) {
+      formElements[key].element.next('.input-error').text(formElements[key].errMessage);
+      valid = false;
+    }
+  }
+  return valid;
+}
+
+
+function submitContactForm(formSelector) {
+  var url_base = 'http://504080.com/api/v1/support';
+  var form = $(formSelector);
+  var formData = new FormData(form[0]);
+
+  return $.ajax({
+    url: url_base,
+    type: 'POST',
+    contentType: false,
+    enctype: 'multipart/form-data',
+    dataType: 'json',
+    processData: false,
+    data: formData
+  })
+    .then(function (result) {
+      showModal('Submitted', 'Thank you!', result.data.message);
+      return result.data;
+    })
+    .fail(handleConnectionError);
+}
+
+function processContactForm(formSelector) {
+  var form = $(formSelector);
+  form.attr('novalidate', 'novalidate');
+
+  var formElements = {enquiryTypeSelect: {selector: 'select[name="enquiry_type"]',
+                                          errMessage: 'Select enquiry type'},
+                      name:     {selector:   'input[name="user_name"]',
+                                 errMessage: 'Please enter a valid name!'},
+                      email:    {selector:   'input[name="email"]',
+                                 errMessage: 'Please enter a valid email address!'},
+                      subject:  {selector:   'input[name="subject"]',
+                                 errMessage: 'Please enter a subject!'},
+                      desc:     {selector:   'textarea[name="description"]',
+                                 errMessage: 'Please enter a description!'}
+                      };
+
+  for (var key in formElements) {
+    if (formElements.hasOwnProperty(key)) {
+      formElements[key].element = form.find(formElements[key].selector);
+      addContactInputValidation(formElements[key].element);
+    }
+  }
+
+  form.submit(function(event) {
+    if (validateContactForm(formElements)) {
+      if (formElements.hasOwnProperty('enquiryTypeSelect') && formElements['enquiryTypeSelect'].element.val()=='Other') {
+        var otherVal = $('#enquiry-type-other-input').val();
+        if (otherVal) {
+          formElements['enquiryTypeSelect'].element.find('option[value="Other"]').val(otherVal);
+        }
+      }
+      submitContactForm(formSelector);
+    }
+    event.preventDefault();
   });
 }
